@@ -164,18 +164,6 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v9"
         app:layout_constraintTop_toTopOf="@+id/guideline_h23" />
 
-    <EditText
-        android:id="@+id/etUsername"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:background="#FFFFFF"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h25"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v11"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v10"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h24" />
 
     <EditText
         android:id="@+id/etEmailAddress"
