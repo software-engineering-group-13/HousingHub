@@ -42,12 +42,13 @@ public class LandlordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_landlord);
 
+        // Initializes the Firebase Authentication
         firebaseAuth = FirebaseAuth.getInstance();
-
+        // Initialize the progress Dialog
         progressDialog = new ProgressDialog(this);
 
+        // set all the text boxes and buttons on the page
         buttonRegister = (Button) findViewById(R.id.btLandlordVerifyAccount);
-
         editTextEmail = (EditText) findViewById(R.id.etEmailAddress);
         editTextPassword = (EditText) findViewById(R.id.etPassword);
         editTextFirstName = findViewById(R.id.etFirstname);
@@ -74,6 +75,7 @@ public class LandlordActivity extends AppCompatActivity {
         buttonRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // Make all the text boxes Strings so they can be added to the database
                 final String email = editTextEmail.getText().toString().trim();
                 String password = editTextPassword.getText().toString().trim();
                 final String firstName = editTextFirstName.getText().toString().trim();
@@ -81,58 +83,68 @@ public class LandlordActivity extends AppCompatActivity {
                 final String phoneNumber = editTextPhoneNumber.getText().toString().trim();
                 final String userType = "Landlord";
 
+                // checks if the email text box is empty
                 if(TextUtils.isEmpty(email)) {
                     //email is empty
                     editTextEmail.setError("Please Enter your email");
                     editTextEmail.requestFocus();
                     return;
                 }
+                // checks if the entered email is the right email format
                 if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
                     editTextEmail.setError("Please Enter a valid email");
                     editTextEmail.requestFocus();
                     return;
                 }
+                // checks if the password is longer than 6 characters
                 if(password.length() <6) {
                     editTextPassword.setError("Minimum length of password is 6");
                     editTextPassword.requestFocus();
                     return;
                 }
+                // checks if the password text box is empty
                 if (TextUtils.isEmpty(password)) {
                     //password is empty
                     editTextPassword.setError("Please Enter Your Password");
                     editTextPassword.requestFocus();
                     return;
                 }
+                // checks if the first name box is empty
                 if (TextUtils.isEmpty(firstName)) {
                     //password is empty
                     editTextFirstName.setError("Please Enter Your First Name");
                     editTextFirstName.requestFocus();
                     return;
                 }
+                // checks if the surname box is empty
                 if (TextUtils.isEmpty(surname)) {
                     //password is empty
                     editTextSurname.setError("Please Enter Your Surname");
                     editTextSurname.requestFocus();
                     return;
                 }
+                // checks if the phone number box is empty
                 if (TextUtils.isEmpty(phoneNumber)) {
                     //password is empty
                     editTextPhoneNumber.setError("Please Enter Your Phone Number");
                     editTextPhoneNumber.requestFocus();
                     return;
                 }
-                // if validations are ok
 
+                // if validations are ok then the User is registered
+
+                // creates a dialog box while the user is being registered
                 progressDialog.setMessage("Registering Landlord...");
                 progressDialog.show();
 
+                // Here the user is created with the firebase method
                 firebaseAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LandlordActivity.this, new OnCompleteListener<AuthResult>() {
                             @Override
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 progressDialog.hide();
                                 if (task.isSuccessful()) {
-                                    // user is successfully registered
+                                    // user object is created
                                     User user = new User(
                                             firstName,
                                             surname,
@@ -141,8 +153,9 @@ public class LandlordActivity extends AppCompatActivity {
                                     );
                                     user.setPhone(phoneNumber);
 
+                                    // The user is added to the User class in storage
                                     FirebaseDatabase.getInstance().getReference("Users")
-                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())        // The userID is the primary key
                                             .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
@@ -155,7 +168,7 @@ public class LandlordActivity extends AppCompatActivity {
                                     });
 
                                 } else {
-                                    // failed to register
+                                    // failed to register, shows the error message
                                     if(task.getException() instanceof FirebaseAuthUserCollisionException) {
                                         Toast.makeText(LandlordActivity.this, "This email already exists", Toast.LENGTH_SHORT).show();
                                     } else {

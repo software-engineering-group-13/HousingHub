@@ -134,13 +134,13 @@ public class StudentActivity extends AppCompatActivity {
                     return;
                 }
                 if (TextUtils.isEmpty(firstName)) {
-                    //password is empty
+                    //first name is empty
                     editTextFirstName.setError("Please Enter Your First Name");
                     editTextFirstName.requestFocus();
                     return;
                 }
                 if (TextUtils.isEmpty(surname)) {
-                    //password is empty
+                    //surname is empty
                     editTextSurname.setError("Please Enter Your Surname");
                     editTextSurname.requestFocus();
                     return;
