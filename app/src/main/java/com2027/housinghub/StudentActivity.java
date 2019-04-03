@@ -1,17 +1,30 @@
 package com2027.housinghub;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthUserCollisionException;
+import com.google.firebase.database.FirebaseDatabase;
 
 public class StudentActivity extends AppCompatActivity {
 
@@ -20,10 +33,35 @@ public class StudentActivity extends AppCompatActivity {
     protected Integer SELECT_FILE = 0;
     protected ImageView camera;
 
+    private Button buttonRegister;
+    private EditText editTextEmail;
+    private EditText editTextPassword;
+
+    private EditText editTextFirstName;
+    private EditText editTextSurname;
+
+
+    private ProgressDialog progressDialog;
+
+    private FirebaseAuth firebaseAuth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student);
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+        progressDialog = new ProgressDialog(this);
+
+        buttonRegister = (Button) findViewById(R.id.btVerifyYourAccountStudent);
+
+
+        editTextEmail = (EditText) findViewById(R.id.etStudentEmail);
+        editTextPassword = (EditText) findViewById(R.id.etStudentPassword);
+        editTextFirstName = findViewById(R.id.etStudentAccountFirstName);
+        editTextSurname = findViewById(R.id.etStudentAccountSurname);
+
 
         //Sets background imageview to the background image within the drawable folder
 //        ImageView background = findViewById(R.id.imBackground);
@@ -67,11 +105,88 @@ public class StudentActivity extends AppCompatActivity {
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Creates an intent and starts a new activity, returns a boolean value to inform
-                //the login activity to display the dialog box associated with this activity.
-                Intent verifyact = new Intent(StudentActivity.this, LoginActivity.class);
-                verifyact.putExtra(DIALOG_STUDENT, true);
-                startActivity(verifyact);
+                final String email = editTextEmail.getText().toString().trim();
+                String password = editTextPassword.getText().toString().trim();
+                final String firstName = editTextFirstName.getText().toString().trim();
+                final String surname = editTextSurname.getText().toString().trim();
+                final String userType = "Student";
+
+                if(TextUtils.isEmpty(email)) {
+                    //email is empty
+                    editTextEmail.setError("Please Enter your email");
+                    editTextEmail.requestFocus();
+                    return;
+                }
+                if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                    editTextEmail.setError("Please Enter a valid email");
+                    editTextEmail.requestFocus();
+                    return;
+                }
+                if(password.length() <6) {
+                    editTextPassword.setError("Minimum length of password is 6");
+                    editTextPassword.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(password)) {
+                    //password is empty
+                    editTextPassword.setError("Please Enter Your Password");
+                    editTextPassword.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(firstName)) {
+                    //first name is empty
+                    editTextFirstName.setError("Please Enter Your First Name");
+                    editTextFirstName.requestFocus();
+                    return;
+                }
+                if (TextUtils.isEmpty(surname)) {
+                    //surname is empty
+                    editTextSurname.setError("Please Enter Your Surname");
+                    editTextSurname.requestFocus();
+                    return;
+                }
+                // if validations are ok
+
+                progressDialog.setMessage("Registering Student...");
+                progressDialog.show();
+
+                firebaseAuth.createUserWithEmailAndPassword(email, password)
+                        .addOnCompleteListener(StudentActivity.this, new OnCompleteListener<AuthResult>() {
+                            @Override
+                            public void onComplete(@NonNull Task<AuthResult> task) {
+                                progressDialog.hide();
+                                if (task.isSuccessful()) {
+                                    // user is successfully registered
+                                    User user = new User(
+                                            firstName,
+                                            surname,
+                                            email,
+                                            userType
+                                    );
+
+                                    FirebaseDatabase.getInstance().getReference("Users")
+                                            .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
+                                            .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<Void> task) {
+                                            if(task.isSuccessful()) {
+                                                Toast.makeText(StudentActivity.this, "User Is Registered", Toast.LENGTH_SHORT).show();
+                                            } else {
+                                                Toast.makeText(StudentActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                            }
+                                        }
+                                    });
+
+                                } else {
+                                    // failed to register
+                                    if(task.getException() instanceof FirebaseAuthUserCollisionException) {
+                                        Toast.makeText(StudentActivity.this, "This email already exists", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(StudentActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
             }
         });
 
