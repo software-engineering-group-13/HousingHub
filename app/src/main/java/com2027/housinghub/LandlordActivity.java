@@ -177,7 +177,6 @@ public class LandlordActivity extends AppCompatActivity {
                                 }
                             }
                         });
-
             }
         });
 
