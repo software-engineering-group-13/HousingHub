@@ -116,7 +116,7 @@ public class LoginActivity extends AppCompatActivity {
                     // The User will be directed to their profile page here
                     Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
