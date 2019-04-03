@@ -26,8 +26,8 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
 
         //Sets background imageview to the background image within the drawable folder
-        ImageView background = findViewById(R.id.imBackground);
-        background.setImageResource(R.drawable.background);
+//        ImageView background = findViewById(R.id.imBackground);
+//        background.setImageResource(R.drawable.background);
 
         //On press the camera imageview will execute the code contained within the onClick function.
         camera =  findViewById(R.id.imStudentActivityCamera);

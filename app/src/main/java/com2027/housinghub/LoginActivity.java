@@ -1,22 +1,43 @@
 package com2027.housinghub;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.TextUtils;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class LoginActivity extends AppCompatActivity {
+
+    FirebaseAuth mAuth;
+
+    EditText editTextEmail;
+    EditText editTextPassword;
+
+    ProgressDialog progressDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        mAuth = FirebaseAuth.getInstance();
+
+        progressDialog = new ProgressDialog(this);
 
         //Retrieves data from other activities which return to this activity when a pressable
         //item is activated. In most cases a button.
@@ -35,12 +56,12 @@ public class LoginActivity extends AppCompatActivity {
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userLogin();
             }
         });
 
-        EditText username = findViewById(R.id.etLoginUsername);
-        EditText password = findViewById(R.id.etLoginPassword);
+        editTextEmail = findViewById(R.id.etLoginEmail);
+        editTextPassword = findViewById(R.id.etLoginPassword);
 
         //On press the account textview will execute the code contained within the onClick function.
         TextView NoAccount = findViewById(R.id.tvNoAccount);
@@ -53,6 +74,52 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    private void userLogin() {
+        String email = editTextEmail.getText().toString().trim();
+        String password = editTextPassword.getText().toString().trim();
+        if(TextUtils.isEmpty(email)) {
+            //email is empty
+            editTextEmail.setError("Please Enter your email");
+            editTextEmail.requestFocus();
+            return;
+        }
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            editTextEmail.setError("Please Enter a valid email");
+            editTextEmail.requestFocus();
+            return;
+        }
+        if(password.length() <6) {
+            editTextPassword.setError("Minimum length of password is 6");
+            editTextPassword.requestFocus();
+            return;
+        }
+        if (TextUtils.isEmpty(password)) {
+            //password is empty
+            editTextPassword.setError("Please Enter Your Password");
+            editTextPassword.requestFocus();
+            return;
+        }
+
+        // Validations OK..
+        progressDialog.setMessage("Signing In...");
+        progressDialog.show();
+
+        mAuth.signInWithEmailAndPassword(email, password)
+        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                progressDialog.hide();
+                if (task.isSuccessful()) {
+                    // successful log In
+                    // The User will be directed to their profile page here
+                    Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
     }
 
     /**
