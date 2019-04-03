@@ -1,7 +1,6 @@
 package com2027.housinghub;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -41,15 +39,15 @@ public class LandlordActivity extends AppCompatActivity {
 
         progressDialog = new ProgressDialog(this);
 
-        buttonRegister = (Button) findViewById(R.id.btLandlordVerifyAccount);
+        buttonRegister = findViewById(R.id.btLandlordVerifyAccount);
 
-        editTextEmail = (EditText) findViewById(R.id.etEmailAddress);
-        editTextPassword = (EditText) findViewById(R.id.etPassword);
+        editTextEmail = findViewById(R.id.etEmailAddress);
+        editTextPassword = findViewById(R.id.etPassword);
 
 
         //Sets background imageview to the background image within the drawable folder
-//        ImageView background = findViewById(R.id.imBackground);
-//        background.setImageResource(R.drawable.background);
+        ImageView background = findViewById(R.id.imBackgroundLandlordActivity);
+        background.setImageResource(R.drawable.backgroundhouse);
 
         //On press the camera image view will execute the code contained within the onClick function.
         ImageView camera = findViewById(R.id.imLandlordPictureCamera);

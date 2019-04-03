@@ -49,7 +49,7 @@ public class LoginActivity extends AppCompatActivity {
         //Sets the background to the image by finding the imageView through its id, the image chosen
         //is in the drawable folder name background
         ImageView background = findViewById(R.id.imLoginBackground);
-        background.setImageResource(R.drawable.background);
+        background.setImageResource(R.drawable.backgroundhouse);
 
         //On press the login button will execute the code contained within the onClick function.
         Button login =  findViewById(R.id.btLogin);
@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        editTextEmail = findViewById(R.id.etLoginEmail);
+        editTextEmail = findViewById(R.id.etLoginEmailAddress);
         editTextPassword = findViewById(R.id.etLoginPassword);
 
         //On press the account textview will execute the code contained within the onClick function.

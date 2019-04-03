@@ -98,7 +98,7 @@
         app:layout_constraintGuide_percent="0.90956" />
 
     <ImageView
-        android:id="@+id/imBStudentActivityackground"
+        android:id="@+id/imStudentActivityBackground"
         android:layout_width="407dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
