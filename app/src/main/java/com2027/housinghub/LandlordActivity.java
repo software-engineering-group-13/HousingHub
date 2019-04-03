@@ -57,8 +57,8 @@ public class LandlordActivity extends AppCompatActivity {
 
 
         //Sets background imageview to the background image within the drawable folder
-//        ImageView background = findViewById(R.id.imBackground);
-//        background.setImageResource(R.drawable.background);
+        ImageView background = findViewById(R.id.imBackgroundLandlordActivity);
+        background.setImageResource(R.drawable.backgroundhouse);
 
         //On press the camera image view will execute the code contained within the onClick function.
         ImageView camera = findViewById(R.id.imLandlordPictureCamera);
