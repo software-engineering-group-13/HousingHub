@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class StudentActivity extends AppCompatActivity {
 
     public static final String DIALOG_STUDENT = "";
@@ -64,8 +65,8 @@ public class StudentActivity extends AppCompatActivity {
 
 
         //Sets background imageview to the background image within the drawable folder
-//        ImageView background = findViewById(R.id.imBackground);
-//        background.setImageResource(R.drawable.background);
+        ImageView background = findViewById(R.id.imStudentActivityBackground);
+        background.setImageResource(R.drawable.backgroundhouse);
 
         //On press the camera imageview will execute the code contained within the onClick function.
         camera =  findViewById(R.id.imStudentActivityCamera);
