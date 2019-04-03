@@ -11,12 +11,12 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class MainActivity extends AppCompatActivity {
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_login);
 
         //Retrieves data from other activities which return to this activity when a pressable
         //item is activated. In most cases a button.
@@ -27,11 +27,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Sets the background to the image by finding the imageView through its id, the image chosen
         //is in the drawable folder name background
-        ImageView background = (ImageView) findViewById(R.id.imageView);
+        ImageView background = findViewById(R.id.imLoginBackground);
         background.setImageResource(R.drawable.background);
 
         //On press the login button will execute the code contained within the onClick function.
-        Button login = (Button) findViewById(R.id.button);
+        Button login =  findViewById(R.id.btLogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -39,17 +39,17 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        EditText username = (EditText) findViewById(R.id.editText2);
-        EditText password = (EditText) findViewById(R.id.editText);
+        EditText username = findViewById(R.id.etLoginUsername);
+        EditText password = findViewById(R.id.etLoginPassword);
 
         //On press the account textview will execute the code contained within the onClick function.
-        TextView account = (TextView) findViewById(R.id.textView2);
-        account.setOnClickListener(new View.OnClickListener() {
+        TextView NoAccount = findViewById(R.id.tvNoAccount);
+        NoAccount.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Creates an intent and starts a new activity
-                Intent accountact = new Intent(MainActivity.this, AccountActivity.class);
-                startActivity(accountact);
+                Intent accountAct = new Intent(LoginActivity.this, AccountActivity.class);
+                startActivity(accountAct);
             }
         });
 
@@ -63,7 +63,7 @@ public class MainActivity extends AppCompatActivity {
      */
     protected void openDialog(int type) {
         //Dialog box will be displayed on this activity
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
         if (type == 0) {
             //Sets the title, message and button of the dialog box
             builder.setTitle("Verification Email Sent!")

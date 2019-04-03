@@ -39,14 +39,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1235" />
+        app:layout_constraintGuide_end="641dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_hA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.31" />
+        app:layout_constraintGuide_begin="227dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_h23"
@@ -105,7 +105,7 @@
         app:layout_constraintGuide_percent="0.90956" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -116,7 +116,7 @@
         app:srcCompat="@android:color/background_light" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imLandlordPictureCamera"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -139,7 +139,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h21" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/etFirstname"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -152,7 +152,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h23" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/etSurname"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -165,7 +165,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h23" />
 
     <EditText
-        android:id="@+id/editText11"
+        android:id="@+id/etUsername"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -178,7 +178,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h24" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/etEmailAddress"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -191,7 +191,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h25" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/etPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -204,7 +204,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h26" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -217,7 +217,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h27" />
 
     <EditText
-        android:id="@+id/editText15"
+        android:id="@+id/etConfirmPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
@@ -231,7 +231,7 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h27" />
 
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btLandlordVerifyAccount"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#da2f5a"
