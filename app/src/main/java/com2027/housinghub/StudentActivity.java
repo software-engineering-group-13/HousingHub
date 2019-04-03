@@ -26,6 +26,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 public class StudentActivity extends AppCompatActivity {
 
     public static final String DIALOG_STUDENT = "";

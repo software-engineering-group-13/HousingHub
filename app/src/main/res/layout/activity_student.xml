@@ -101,6 +101,7 @@
         android:id="@+id/imStudentActivityBackground"
         android:layout_width="407dp"
         android:layout_height="0dp"
+        android:background="@drawable/backgroundhouse"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
