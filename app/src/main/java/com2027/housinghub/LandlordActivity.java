@@ -16,11 +16,11 @@ public class LandlordActivity extends AppCompatActivity {
 
 
         //Sets background imageview to the background image within the drawable folder
-        ImageView background = (ImageView) findViewById(R.id.imageView4);
+        ImageView background = findViewById(R.id.imBackground);
         background.setImageResource(R.drawable.background);
 
         //On press the camera imageview will execute the code contained within the onClick function.
-        ImageView camera = (ImageView) findViewById(R.id.imageView7);
+        ImageView camera = findViewById(R.id.imLandlordPictureCamera);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +30,7 @@ public class LandlordActivity extends AppCompatActivity {
         });
 
         //On press the verify button will execute the code contained within the onClick function.
-        Button verify = (Button) findViewById(R.id.button6);
+        Button verify = findViewById(R.id.btLandlordVerifyAccount);
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

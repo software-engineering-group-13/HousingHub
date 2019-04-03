@@ -26,11 +26,11 @@ public class StudentActivity extends AppCompatActivity {
         setContentView(R.layout.activity_student);
 
         //Sets background imageview to the background image within the drawable folder
-        ImageView background = (ImageView) findViewById(R.id.imageView3);
+        ImageView background = findViewById(R.id.imBackground);
         background.setImageResource(R.drawable.background);
 
         //On press the camera imageview will execute the code contained within the onClick function.
-        camera = (ImageView) findViewById(R.id.imageView6);
+        camera =  findViewById(R.id.imStudentActivityCamera);
         camera.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -63,13 +63,13 @@ public class StudentActivity extends AppCompatActivity {
         });
 
         //On press the verify button will execute the code contained within the onClick function.
-        Button verify = (Button) findViewById(R.id.button5);
+        Button verify =  findViewById(R.id.btVerifyYourAccountStudent);
         verify.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //Creates an intent and starts a new activity, returns a boolean value to inform
                 //the login activity to display the dialog box associated with this activity.
-                Intent verifyact = new Intent(StudentActivity.this, MainActivity.class);
+                Intent verifyact = new Intent(StudentActivity.this, LoginActivity.class);
                 verifyact.putExtra(DIALOG_STUDENT, true);
                 startActivity(verifyact);
             }
