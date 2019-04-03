@@ -15,8 +15,12 @@
       },
       "oauth_client": [
         {
-          "client_id": "1045094521992-rclsokhvtjpmc6g5m76959vts0k3jaq9.apps.googleusercontent.com",
-          "client_type": 3
+          "client_id": "1045094521992-4nqua72eecrbm8b69mn5cipkm028mklf.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com2027.housinghub",
+            "certificate_hash": "64ec733b9154885363de5f36fb3809a79cf3a75c"
+          }
         }
       ],
       "api_key": [
@@ -25,15 +29,13 @@
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 1
-        },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
-        },
-        "ads_service": {
-          "status": 2
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1045094521992-rclsokhvtjpmc6g5m76959vts0k3jaq9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
