@@ -123,7 +123,7 @@ public class LandlordActivity extends AppCompatActivity {
                 }
                 // if validations are ok
 
-                progressDialog.setMessage("Registering User...");
+                progressDialog.setMessage("Registering Landlord...");
                 progressDialog.show();
 
                 firebaseAuth.createUserWithEmailAndPassword(email, password)

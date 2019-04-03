@@ -159,19 +159,6 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h13" />
 
     <EditText
-        android:id="@+id/etStudentAccountUsername"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:background="#FFFFFF"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h15"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v8"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v7"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h14" />
-
-    <EditText
         android:id="@+id/etStudentEmail"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -197,18 +184,7 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v7"
         app:layout_constraintTop_toTopOf="@+id/guideline_h16" />
 
-    <EditText
-        android:id="@+id/etStudentPassword"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:background="#FFFFFF"
-        android:hint="@string/confirm"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h17"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v8"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v6"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h16" />
+
 
     <Button
         android:id="@+id/btVerifyYourAccountStudent"
