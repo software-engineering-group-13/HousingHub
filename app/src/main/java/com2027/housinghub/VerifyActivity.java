@@ -17,8 +17,8 @@ public class VerifyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_verify);
 
         //Sets background imageview to the background image within the drawable folder
-        ImageView background = findViewById(R.id.imVerifyBackground);
-        background.setImageResource(R.drawable.background);
+//        ImageView background = findViewById(R.id.imVerifyBackground);
+//        background.setImageResource(R.drawable.background);
 
         //On press the camera imageview will execute the code contained within the onClick function.
         ImageView camera = findViewById(R.id.imVerifyCamera);
