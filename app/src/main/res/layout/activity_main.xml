@@ -99,7 +99,7 @@
         android:layout_height="0dp"
         android:background="#da2f5a"
         android:text="@string/login"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorWhite"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h7"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v5"
         app:layout_constraintHorizontal_bias="0.0"
@@ -112,7 +112,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="#FFFFFF"
+        android:background="@color/colorWhite"
         android:hint="@string/username"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h4"
@@ -126,7 +126,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="#FFFFFF"
+        android:background="@color/colorWhite"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h5"
@@ -140,7 +140,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:text="@string/account"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorWhite"
         app:layout_constraintStart_toStartOf="@+id/guideline_v3"
         app:layout_constraintTop_toTopOf="@+id/guideline_h7" />
 
@@ -149,21 +149,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/colorWhite"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v4"
         app:layout_constraintStart_toStartOf="@+id/guideline_v4"
         app:layout_constraintTop_toTopOf="@+id/guideline_h2" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="3dp"
-        android:text="@string/forgotten"
-        android:textColor="#FFFFFF"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h5" />
 
 </android.support.constraint.ConstraintLayout>

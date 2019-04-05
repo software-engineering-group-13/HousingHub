@@ -4,14 +4,19 @@ import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.renderscript.ScriptGroup;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class StudentActivity extends AppCompatActivity {
 
@@ -44,10 +49,13 @@ public class StudentActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int which) {
                                 if(selection[which].equals("Camera")) {
                                     Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
-                                    startActivityForResult(intent, REQUEST_CAMERA);
+                                    if (intent.resolveActivity(getPackageManager()) != null) {
+                                        startActivityForResult(intent, REQUEST_CAMERA);
+                                    }
                                 } else if (selection[which].equals("Gallery")) {
-                                    Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                                    Intent intent = new Intent();
                                     intent.setType("image/*");
+                                    intent.setAction(Intent.ACTION_GET_CONTENT);
                                     startActivityForResult(intent.createChooser(intent, "Select File"), SELECT_FILE);
                                 }
                             }
@@ -84,11 +92,16 @@ public class StudentActivity extends AppCompatActivity {
         if (resultCode == Activity.RESULT_OK) {
             if (requestCode == REQUEST_CAMERA) {
                 Bundle bundle = data.getExtras();
-                final Bitmap bmp = (Bitmap) bundle.get("data");
+                Bitmap bmp = (Bitmap) bundle.get("data");
                 camera.setImageBitmap(bmp);
             } else if (requestCode == SELECT_FILE) {
-                Uri selectImage = data.getData();
-                camera.setImageURI(selectImage);
+                try {
+                    Uri selectImage = data.getData();
+                    InputStream imageStream = getContentResolver().openInputStream(selectImage);
+                    camera.setImageBitmap(BitmapFactory.decodeStream(imageStream));
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
             }
         }
     }
