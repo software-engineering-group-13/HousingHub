@@ -21,7 +21,10 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.FirebaseDatabase;
+
+import com2027.housinghub.Home.HomeActivity;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,7 +58,7 @@ public class LoginActivity extends AppCompatActivity {
         background.setImageResource(R.drawable.backgroundhouse);
 
         //On press the login button will execute the code contained within the onClick function.
-        Button login =  findViewById(R.id.btLogin);
+        Button login = findViewById(R.id.btLogin);
         login.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -82,7 +85,7 @@ public class LoginActivity extends AppCompatActivity {
     private void userLogin() {
         String email = editTextEmail.getText().toString().trim();
         String password = editTextPassword.getText().toString().trim();
-        if(TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)) {
             //email is empty
             editTextEmail.setError("Please Enter your email");
             editTextEmail.requestFocus();
@@ -93,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
             editTextEmail.requestFocus();
             return;
         }
-        if(password.length() <6) {
+        if (password.length() < 6) {
             editTextPassword.setError("Minimum length of password is 6");
             editTextPassword.requestFocus();
             return;
@@ -110,27 +113,28 @@ public class LoginActivity extends AppCompatActivity {
         progressDialog.show();
 
         mAuth.signInWithEmailAndPassword(email, password)
-        .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
-                progressDialog.hide();
-                if (task.isSuccessful()) {
-                    // successful log In
-                    // The User will be directed to their profile page here
-                    // in the intent remember to make a intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
-                    Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        progressDialog.hide();
+                        if (task.isSuccessful()) {
+                            // successful log In
+                            // The User will be directed to their profile page here
+                            // in the intent remember to make a intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                            Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
+                            showHome();
+                        } else {
+                            Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
+                        }
+                    }
+                });
     }
 
     /**
      * Function creates a dialog box, the contents of the box is determined by the inputted
      * parameter
-     * @param type
-     *          an integer which determins the contents of the dialog box
+     *
+     * @param type an integer which determins the contents of the dialog box
      */
     protected void openDialog(int type) {
         //Dialog box will be displayed on this activity
@@ -170,4 +174,21 @@ public class LoginActivity extends AppCompatActivity {
         builder.create().show();
     }
 
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //Check if a user is already logged in
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            showHome();
+
+        }
+    }
+
+    private void showHome() {
+        Intent login = new Intent(LoginActivity.this, HomeActivity.class);
+        startActivity(login);
+    }
 }
