@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:id="@+id/relativeLayout1">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:id="@+id/profile_picture"
+                android:layout_marginTop="20dp"
+                app:civ_border_color="@color/black"
+                app:civ_border_width="0.5dp"
+                android:layout_marginLeft="25dp"
+                android:layout_centerVertical="true"/>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="15dp"
+                android:text="Username"
+                android:layout_toRightOf="@+id/profile_picture"
+                android:layout_marginLeft="10dp"
+                android:layout_centerVertical="true"
+                android:id="@+id/username"
+                android:textColor="@color/black"
+                />
+
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:src="@drawable/ic_more"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:id="@+id/ivEllipses"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:id="@+id/timeFrameLayout"
+            android:layout_below="@+id/relativeLayout1"
+            android:elevation="20dp"
+            >
+
+            <TextView
+                android:id="@+id/timeFrame"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/rounded_yellow_border"
+                android:gravity="center"
+                android:text="TimeFrame"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+        </RelativeLayout>
+
+
+        <com2027.housinghub.Utils.SquareImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/post_image"
+            android:layout_below="@id/relativeLayout1"
+            android:scaleType="centerCrop"
+            android:layout_marginLeft="10dp"
+            android:elevation="10dp"
+            >
+
+        </com2027.housinghub.Utils.SquareImageView>
+
+        <!-- -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/rounded_grey_border"
+            android:elevation="10dp"
+            android:layout_below="@+id/post_image"
+            >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/titleHouse"
+                android:textColor="@color/black"
+                android:text="HouseTitle"
+                android:layout_marginLeft="10dp"
+                android:textSize="20dp"
+                android:elevation="10dp"
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/houseTags"
+                android:textColor="@color/black"
+                android:layout_below="@id/titleHouse"
+                android:layout_marginLeft="10dp"
+                android:text="tags"
+                android:textSize="15dp"
+                />
+
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</RelativeLayout>
+

@@ -15,11 +15,11 @@ public class AccountActivity extends AppCompatActivity {
         setContentView(R.layout.activity_account);
 
         //Sets background imageview to the background image within the drawable folder
-        ImageView background = (ImageView) findViewById(R.id.imageView2);
-        background.setImageResource(R.drawable.background);
+        ImageView background = findViewById(R.id.imAccountActivityBackground);
+        background.setImageResource(R.drawable.backgroundhouse);
 
         //On press the student button will execute the code contained within the onClick function.
-        Button student = (Button) findViewById(R.id.button2);
+        Button student = findViewById(R.id.btIsStudent);
         student.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -30,7 +30,7 @@ public class AccountActivity extends AppCompatActivity {
         });
 
         //On press the student button will execute the code contained within the onClick function.
-        Button landlord = (Button) findViewById(R.id.button3);
+        Button landlord = findViewById(R.id.btIsLandlord);
         landlord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

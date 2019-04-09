@@ -1,6 +1,10 @@
 <resources>
     <string name="app_name">HousingHub</string>
 
+
+    <string name="navigationn_drawer_open"> Open navigation drawer </string>
+    <string name="navigation_drawer_close"> Close navigation drawer </string>
+
     <string name="title">Student Housing Hub</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
@@ -29,9 +33,6 @@
     <string name="complete">Complete my Verification</string>
     <string name="landlordnotice">Please note: You will not be able to create any listing until authorised by an admin, this is to ensure our users can guarantee each landlord is legitimate and legally allowed to rent.</string>
     <string name="landlordinform">Take a photo or upload an image showing your right to be a landlord in the United Kingdom.</string>
-
-<!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

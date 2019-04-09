@@ -98,9 +98,10 @@
         app:layout_constraintGuide_percent="0.90956" />
 
     <ImageView
-        android:id="@+id/imageView3"
-        android:layout_width="0dp"
+        android:id="@+id/imStudentActivityBackground"
+        android:layout_width="407dp"
         android:layout_height="0dp"
+        android:background="@drawable/backgroundhouse"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -109,9 +110,11 @@
         app:srcCompat="@android:color/background_light" />
 
     <ImageView
-        android:id="@+id/imageView6"
+        android:id="@+id/imStudentActivityCamera"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline_hA"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v8"
         app:layout_constraintStart_toStartOf="@+id/guideline_v7"
@@ -119,23 +122,23 @@
         app:srcCompat="@android:drawable/ic_menu_camera" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/tvStudentActivityBackground"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/create"
+        android:textColor="#FFFFFF"
         android:textSize="24dp"
-        android:textColor="@color/colorWhite"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v6"
         app:layout_constraintStart_toStartOf="@+id/guideline_v6"
         app:layout_constraintTop_toTopOf="@+id/guideline_h11" />
 
     <EditText
-        android:id="@+id/editText3"
+        android:id="@+id/etStudentAccountFirstName"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/firstname"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h14"
@@ -144,11 +147,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h13" />
 
     <EditText
-        android:id="@+id/editText4"
+        android:id="@+id/etStudentAccountSurname"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/lastname"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h14"
@@ -157,24 +160,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h13" />
 
     <EditText
-        android:id="@+id/editText5"
+        android:id="@+id/etStudentEmail"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h15"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v8"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v7"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h14" />
-
-    <EditText
-        android:id="@+id/editText6"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/studentemail"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h16"
@@ -183,11 +173,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h15" />
 
     <EditText
-        android:id="@+id/editText7"
+        android:id="@+id/etStudentPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h17"
@@ -195,26 +185,15 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v7"
         app:layout_constraintTop_toTopOf="@+id/guideline_h16" />
 
-    <EditText
-        android:id="@+id/editText8"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:background="@color/colorWhite"
-        android:hint="@string/confirm"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h17"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v8"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v6"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h16" />
+
 
     <Button
-        android:id="@+id/button5"
+        android:id="@+id/btVerifyYourAccountStudent"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
+        android:background="#da2f5a"
         android:text="@string/verify"
-        android:textColor="@color/colorWhite"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h20"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v8"
         app:layout_constraintStart_toStartOf="@+id/guideline_v7"

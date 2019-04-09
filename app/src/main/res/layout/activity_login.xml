@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".LoginActivity">
+
+
+
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_v1"
@@ -84,7 +88,7 @@
         app:layout_constraintGuide_percent="0.7752" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imLoginBackground"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:scaleType="centerCrop"
@@ -94,12 +98,12 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btLogin"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#da2f5a"
         android:text="@string/login"
-        android:textColor="@color/colorWhite"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h7"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v5"
         app:layout_constraintHorizontal_bias="0.0"
@@ -108,12 +112,12 @@
         app:layout_constraintVertical_bias="0.0" />
 
     <EditText
-        android:id="@+id/editText2"
+        android:id="@+id/etLoginEmailAddress"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
-        android:hint="@string/username"
+        android:background="#FFFFFF"
+        android:hint="@string/email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h4"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v2"
@@ -122,11 +126,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h3" />
 
     <EditText
-        android:id="@+id/editText"
+        android:id="@+id/etLoginPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h5"
@@ -135,25 +139,25 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h4" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/tvNoAccount"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="3dp"
         android:text="@string/account"
-        android:textColor="@color/colorWhite"
+        android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="@+id/guideline_v3"
         app:layout_constraintTop_toTopOf="@+id/guideline_h7" />
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/tvLoginHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/title"
-        android:textColor="@color/colorWhite"
+        android:textColor="#FFFFFF"
         android:textSize="32sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v4"
         app:layout_constraintStart_toStartOf="@+id/guideline_v4"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline_h10" />
 
 </android.support.constraint.ConstraintLayout>

@@ -39,14 +39,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.1235" />
+        app:layout_constraintGuide_end="641dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_hA"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.31" />
+        app:layout_constraintGuide_begin="227dp" />
 
     <android.support.constraint.Guideline
         android:id="@+id/guideline_h23"
@@ -105,9 +105,10 @@
         app:layout_constraintGuide_percent="0.90956" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imBackgroundLandlordActivity"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:background="@drawable/backgroundhouse"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -116,7 +117,7 @@
         app:srcCompat="@android:color/background_light" />
 
     <ImageView
-        android:id="@+id/imageView7"
+        android:id="@+id/imLandlordPictureCamera"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginBottom="8dp"
@@ -132,18 +133,18 @@
         android:layout_height="wrap_content"
         android:text="@string/create"
         android:textSize="24dp"
-        android:textColor="@color/colorWhite"
+        android:textColor="#FFFFFF"
         android:textStyle="bold"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v9"
         app:layout_constraintStart_toStartOf="@+id/guideline_v9"
         app:layout_constraintTop_toTopOf="@+id/guideline_h21" />
 
     <EditText
-        android:id="@+id/editText9"
+        android:id="@+id/etFirstname"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/firstname"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h24"
@@ -152,11 +153,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h23" />
 
     <EditText
-        android:id="@+id/editText10"
+        android:id="@+id/etSurname"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/lastname"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h24"
@@ -164,25 +165,13 @@
         app:layout_constraintStart_toStartOf="@+id/guideline_v9"
         app:layout_constraintTop_toTopOf="@+id/guideline_h23" />
 
-    <EditText
-        android:id="@+id/editText11"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:background="@color/colorWhite"
-        android:hint="@string/username"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h25"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v11"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v10"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h24" />
 
     <EditText
-        android:id="@+id/editText12"
+        android:id="@+id/etEmailAddress"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/email"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h26"
@@ -191,11 +180,11 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h25" />
 
     <EditText
-        android:id="@+id/editText13"
+        android:id="@+id/etPhoneNumber"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:background="#FFFFFF"
         android:hint="@string/number"
         android:inputType="phone"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h27"
@@ -204,39 +193,27 @@
         app:layout_constraintTop_toTopOf="@+id/guideline_h26" />
 
     <EditText
-        android:id="@+id/editText14"
+        android:id="@+id/etPassword"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="1dp"
-        android:background="@color/colorWhite"
+        android:layout_marginEnd="8dp"
+        android:layout_marginRight="8dp"
+        android:background="#FFFFFF"
         android:hint="@string/password"
         android:inputType="textPassword"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h28"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v9"
+        app:layout_constraintEnd_toStartOf="@+id/guideline_v11"
         app:layout_constraintStart_toStartOf="@+id/guideline_v10"
         app:layout_constraintTop_toTopOf="@+id/guideline_h27" />
 
-    <EditText
-        android:id="@+id/editText15"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_margin="1dp"
-        android:layout_marginBottom="8dp"
-        android:background="@color/colorWhite"
-        android:hint="@string/confirm"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toTopOf="@+id/guideline_h28"
-        app:layout_constraintEnd_toStartOf="@+id/guideline_v11"
-        app:layout_constraintStart_toStartOf="@+id/guideline_v9"
-        app:layout_constraintTop_toTopOf="@+id/guideline_h27" />
-
     <Button
-        android:id="@+id/button6"
+        android:id="@+id/btLandlordVerifyAccount"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:background="#da2f5a"
         android:text="@string/verify"
-        android:textColor="@color/colorWhite"
+        android:textColor="#FFFFFF"
         app:layout_constraintBottom_toTopOf="@+id/guideline_h30"
         app:layout_constraintEnd_toStartOf="@+id/guideline_v11"
         app:layout_constraintStart_toStartOf="@+id/guideline_v10"
