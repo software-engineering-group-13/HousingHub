@@ -23,6 +23,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com2027.housinghub.Home.HomeActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
@@ -72,7 +74,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Creates an intent and starts a new activity
-                Intent accountact = new Intent(MainActivity.this, AccountActivity.class);
+                Intent accountact = new Intent(LoginActivity.this, AccountActivity.class);
                 startActivity(accountact);
             }
         });
@@ -118,6 +120,8 @@ public class LoginActivity extends AppCompatActivity {
                     // successful log In
                     // The User will be directed to their profile page here
                     // in the intent remember to make a intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    Intent homeact = new Intent(LoginActivity.this, HomeActivity.class);
+                    startActivity(homeact);
                     Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
@@ -134,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     protected void openDialog(int type) {
         //Dialog box will be displayed on this activity
-        AlertDialog.Builder builder = new AlertDialog.Builder(MainActivity.this);
+        AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
         if (type == 0) {
             //Sets the title, message and button of the dialog box
             builder.setTitle("Verification Email Sent!")

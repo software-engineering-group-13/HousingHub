@@ -16,9 +16,10 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-import com2027.housinghub.Account.AccountFragment;
+import com2027.housinghub.Account.EditLandlordProfileFragment;
 import com2027.housinghub.Favourites.FavouriteFragment;
 import com2027.housinghub.Group.GroupFragment;
+import com2027.housinghub.Account.LandlordProfileFragment;
 import com2027.housinghub.R;
 import com2027.housinghub.Settings.SettingsFragment;
 
@@ -78,6 +79,10 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
      */
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        //READ =============================================================================== READ
+        //Cases within this would have to be different depending on which user type is logged in
+        //In the case of having a student the below cases are fine, but a landlord would have no
+        //need for groups and favourites and might rather want to see his own listings instead
         switch (item.getItemId()){
             case R.id.nav_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
@@ -97,8 +102,13 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
             //This will have to change for user and landlord,  (so make two account fragments) if user is student
             //show this, if not, show this.
             case R.id.nav_account:
+                //READ ============================================================= READ
+                //This should show the edit version of their account, unless an edit button is added
+                //The uneditable version will be shown when a different account views their profile
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new AccountFragment()).commit();
+                        new LandlordProfileFragment()).commit();
+                //getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                //        new StudentProfileFragment()).commit();
                 break;
 
             case R.id.nav_settings:
