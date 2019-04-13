@@ -21,6 +21,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com2027.housinghub.Home.HomeActivity;
+
 public class LandlordActivity extends AppCompatActivity {
 
     private Button buttonRegister;
@@ -160,7 +162,10 @@ public class LandlordActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()) {
-                                                Toast.makeText(LandlordActivity.this, "User Is Registered", Toast.LENGTH_SHORT).show();
+                                                Intent registerUser = new Intent(LandlordActivity.this, HomeActivity.class);
+                                                registerUser.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                                startActivity(registerUser);
+                                                Toast.makeText(LandlordActivity.this, "Landlord Is Now Registered", Toast.LENGTH_SHORT).show();
                                             } else {
                                                 Toast.makeText(LandlordActivity.this, task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                                             }

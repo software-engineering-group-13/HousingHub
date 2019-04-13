@@ -15,7 +15,6 @@ public class User implements Parcelable {
     private UserType type;
 
 
-
     /**
      *
      * @param username

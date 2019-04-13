@@ -1,5 +1,7 @@
 package com2027.housinghub;
 
+import com2027.housinghub.Home.HomeActivity;
+
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -118,6 +120,9 @@ public class LoginActivity extends AppCompatActivity {
                     // successful log In
                     // The User will be directed to their profile page here
                     // in the intent remember to make a intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    Intent signIn = new Intent(LoginActivity.this, HomeActivity.class);
+                    signIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    startActivity(signIn);
                     Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();
