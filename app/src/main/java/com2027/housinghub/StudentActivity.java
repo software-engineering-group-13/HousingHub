@@ -27,6 +27,7 @@ import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
 import com2027.housinghub.Home.HomeActivity;
+import com2027.housinghub.Models.User;
 
 
 public class StudentActivity extends AppCompatActivity {
@@ -47,6 +48,18 @@ public class StudentActivity extends AppCompatActivity {
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
+
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        // If a user is already logged in, go straight to the home page
+        if(firebaseAuth.getCurrentUser() != null) {
+            finish();
+            startActivity(new Intent(this, HomeActivity.class));
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -173,6 +186,7 @@ public class StudentActivity extends AppCompatActivity {
                                         @Override
                                         public void onComplete(@NonNull Task<Void> task) {
                                             if(task.isSuccessful()) {
+                                                finish();
                                                 Intent registerUser = new Intent(StudentActivity.this, HomeActivity.class);
                                                 registerUser.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                                 startActivity(registerUser);
