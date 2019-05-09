@@ -147,7 +147,7 @@ public class HomeActivity extends AppCompatActivity implements NavigationView.On
 
             userInfo.setFirstName(ds.child(userID).getValue(User.class).getFirstName());
             userInfo.setSurname(ds.child(userID).getValue(User.class).getSurname());
-
+//
             firstName = userInfo.getFirstName();
             surname = userInfo.getSurname();
             email = mAuth.getCurrentUser().getEmail();
