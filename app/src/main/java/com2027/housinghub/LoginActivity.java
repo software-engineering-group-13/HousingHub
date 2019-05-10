@@ -25,6 +25,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
+import com2027.housinghub.Home.HomeActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     FirebaseAuth mAuth;
@@ -55,7 +57,7 @@ public class LoginActivity extends AppCompatActivity {
         //Sets the background to the image by finding the imageView through its id, the image chosen
         //is in the drawable folder name background
         ImageView background = findViewById(R.id.imLoginBackground);
-        background.setImageResource(R.drawable.backgroundhouse);
+        background.setImageResource(R.drawable.background);
 
         //On press the login button will execute the code contained within the onClick function.
         Button login =  findViewById(R.id.btLogin);
@@ -76,8 +78,8 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 finish();
                 //Creates an intent and starts a new activity
-                Intent accountAct = new Intent(LoginActivity.this, AccountActivity.class);
-                startActivity(accountAct);
+                Intent accountact = new Intent(LoginActivity.this, AccountActivity.class);
+                startActivity(accountact);
             }
         });
 
@@ -123,9 +125,11 @@ public class LoginActivity extends AppCompatActivity {
                     // successful log In
                     // The User will be directed to their profile page here
                     // in the intent remember to make a intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+
                     Intent signIn = new Intent(LoginActivity.this, HomeActivity.class);
                     signIn.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     startActivity(signIn);
+
                     Toast.makeText(getApplicationContext(), "User is Logged In", Toast.LENGTH_SHORT).show();
                 } else {
                     Toast.makeText(getApplicationContext(), task.getException().getMessage(), Toast.LENGTH_LONG).show();

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- Colours used for the app-->
-    <color name="colorPrimary">#B80B4A</color>
+    <color name="colorPrimary">#da2f5a</color>
+    <color name="colorWhite">#ffffff</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
 
@@ -9,3 +9,4 @@
     <color name="white">#fff</color>
     <color name="black">#000000</color>
 </resources>
+

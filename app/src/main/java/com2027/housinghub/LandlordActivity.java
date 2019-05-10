@@ -1,8 +1,15 @@
 package com2027.housinghub;
 
 import android.app.ProgressDialog;
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.net.Uri;
+import android.provider.MediaStore;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -21,10 +28,19 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseAuthUserCollisionException;
 import com.google.firebase.database.FirebaseDatabase;
 
+
 import com2027.housinghub.Home.HomeActivity;
 import com2027.housinghub.Models.User;
 
+import java.io.IOException;
+import java.io.InputStream;
+
+
 public class LandlordActivity extends AppCompatActivity {
+
+    protected Integer REQUEST_CAMERA = 1;
+    protected Integer SELECT_FILE = 0;
+    protected ImageView camera;
 
     private Button buttonRegister;
     private EditText editTextEmail;
@@ -71,7 +87,7 @@ public class LandlordActivity extends AppCompatActivity {
 
         //Sets background imageview to the background image within the drawable folder
         ImageView background = findViewById(R.id.imBackgroundLandlordActivity);
-        background.setImageResource(R.drawable.backgroundhouse);
+        background.setImageResource(R.drawable.background);
 
         //On press the camera image view will execute the code contained within the onClick function.
         ImageView camera = findViewById(R.id.imLandlordPictureCamera);
@@ -79,7 +95,33 @@ public class LandlordActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //Opens camera and allows the user to take photos.
+                final CharSequence[] selection = {"Camera", "Gallery"};
 
+                AlertDialog.Builder builder = new AlertDialog.Builder(LandlordActivity.this);
+                builder.setTitle("Select option:")
+                        .setItems(selection, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                if(selection[which].equals("Camera")) {
+                                    Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                                    if (intent.resolveActivity(getPackageManager()) != null) {
+                                        startActivityForResult(intent, REQUEST_CAMERA);
+                                    }
+                                } else if (selection[which].equals("Gallery")) {
+                                    Intent intent = new Intent();
+                                    intent.setType("image/*");
+                                    intent.setAction(Intent.ACTION_GET_CONTENT);
+                                    startActivityForResult(intent.createChooser(intent, "Select File"), SELECT_FILE);
+                                }
+                            }
+                        });
+                builder.setPositiveButton("CLOSE", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        //Closes the dialog
+                    }
+                });
+                builder.create().show();
             }
         });
 
@@ -197,10 +239,28 @@ public class LandlordActivity extends AppCompatActivity {
             }
         });
 
-
-
     }
 
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (resultCode == Activity.RESULT_OK) {
+            if (requestCode == REQUEST_CAMERA) {
+                Bundle bundle = data.getExtras();
+                Bitmap bmp = (Bitmap) bundle.get("data");
+                camera.setImageBitmap(bmp);
+            } else if (requestCode == SELECT_FILE) {
+                try {
+                    Uri selectImage = data.getData();
+                    InputStream imageStream = getContentResolver().openInputStream(selectImage);
+                    camera.setImageBitmap(BitmapFactory.decodeStream(imageStream));
+                } catch (IOException exception) {
+                    exception.printStackTrace();
+                }
+            }
+        }
+    }
 
 
 
