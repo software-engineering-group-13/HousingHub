@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:background="@color/colorPrimaryDark">
+
+        <ImageView
+            android:id="@+id/imageViewGroup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/textNameGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Name Name"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/textUniGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="University of Example"
+                android:textSize="22sp" />
+
+            <TextView
+                android:id="@+id/textCourseGroup"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Prestigous Course"
+                android:textSize="22sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+</LinearLayout>
